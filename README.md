@@ -1,0 +1,1 @@
+# infodot-icinga2
