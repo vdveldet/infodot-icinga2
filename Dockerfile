@@ -18,7 +18,7 @@ RUN 	yum -y install http://packages.icinga.org/epel/7/release/noarch/icinga-rpm-
 # we'll need that for mysql schema import for icingaweb2
 RUN [ -f /etc/rpm/macros.imgcreate ] && sed -i '/excludedocs/d' /etc/rpm/macros.imgcreate || exit 0
 RUN [ -f /etc/yum.conf ] && sed -i '/nodocs/d' /etc/yum.conf || exit 0
-RUN -y reinstall icingaweb2
+RUN yum -y reinstall icingaweb2
 
 
 # SETUP SSH with no PAM
