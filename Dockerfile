@@ -79,7 +79,5 @@ EXPOSE 22 80 443 5665 3306
 # volumes
 VOLUME ["/etc/icinga2", "/etc/icingaweb2", "/var/lib/icinga2", "/usr/share/icingaweb2", "/var/lib/mysql"]
 
-# change this to entrypoint preventing bash login
-CMD ["/bin/bash"]
-#ENTRYPOINT ["/opt/icinga2/initdocker"]
+ENTRYPOINT ["/opt/icinga2/initdocker"]
 
