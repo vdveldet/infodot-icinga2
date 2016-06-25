@@ -9,7 +9,8 @@ RUN 	yum -y update && \
  	yum -y install epel-release && \
 	yum -y install httpd hostname bind-utils cronie logrotate supervisor && \
 	yum -y install openssh openssh-server openssh-client rsyslog sudo passwd sed which pwgen psmisc mailx && \
-	yum -y install mariadb-server mariadb-libs mariadb
+	yum -y install mariadb-server mariadb-libs mariadb && \
+ 	yum -y install unzip
 RUN 	yum -y install http://packages.icinga.org/epel/7/release/noarch/icinga-rpm-release-7-1.el7.centos.noarch.rpm && \
 	yum -y install nagios-plugins-all icinga2 icinga2-doc icinga2-ido-mysql icingaweb2 icingacli php-ZendFramework php-ZendFramework-Db-Adapter-Pdo-Mysql
 
