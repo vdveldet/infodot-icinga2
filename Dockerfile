@@ -84,6 +84,7 @@ RUN sed -i 's/;date.timezone =/date.timezone = UTC/g' /etc/php.ini
 
 # includes supervisor config
 ADD content/ /
+RUM chmod +x /usr/local/bin/icinga2_start
 
 # ports (icinga2 api & cluster (5665), mysql (3306))
 EXPOSE 22 80 443 5665 3306
@@ -91,5 +92,5 @@ EXPOSE 22 80 443 5665 3306
 # volumes
 VOLUME ["/etc/icinga2", "/etc/icingaweb2", "/var/lib/icinga2", "/usr/share/icingaweb2", "/var/lib/mysql"]
 
-ENTRYPOINT ["/opt/icinga2/initdocker"]
+ENTRYPOINT ["/usr/local/bin/icinga2_start"]
 
