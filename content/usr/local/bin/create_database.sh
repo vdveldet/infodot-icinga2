@@ -1,4 +1,9 @@
-     echo_log "Starting DB schema import. This might take a while (20sec+)."
+#!/bin/bash
+
+if [ -d /var/lib/mysql/icinga ]; then
+	echo "Icinga database has been found, reusing"
+else
+	echo "CREATING Icinga database"
         mysql_install_db --user=mysql --ldata=/var/lib/mysql 2>&1 >/dev/null
         /usr/bin/mysqld_safe 2>&1 >/dev/null &
         sleep 10s
@@ -8,4 +13,4 @@
         mysql -uicingaweb2 -picingaweb2 icingaweb2 < /usr/share/doc/icingaweb2/schema/mysql.schema.sql
         mysql -uicingaweb2 -picingaweb2 icingaweb2 -e "INSERT INTO icingaweb_user (name, active, password_hash) VALUES ('icingaadmin', 1, '\$1\$iQSrnmO9\$T3NVTu0zBkfuim4lWNRmH.');"
         killall mysqld
-sleep 1s
+fi
