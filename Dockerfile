@@ -84,7 +84,7 @@ RUN sed -i 's/;date.timezone =/date.timezone = UTC/g' /etc/php.ini
 
 # includes supervisor config
 ADD content/ /
-RUM chmod +x /usr/local/bin/icinga2_start
+RUN chmod +x /usr/local/bin/icinga2_start
 
 # ports (icinga2 api & cluster (5665), mysql (3306))
 EXPOSE 22 80 443 5665 3306
