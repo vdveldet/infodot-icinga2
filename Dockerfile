@@ -70,7 +70,7 @@ RUN mkdir -p /var/log/supervisor; \
 
 # Add pnp4nagios module
 ADD https://exchange.icinga.org/icinga/PNP/files/1255/icingaweb2-module-pnp.zip /tmp/
-RUN cd /tmp && unzip unzip icingaweb2-module-pnp.zip && mv icingaweb2-module-pnp-1.0.1/ /usr/share/icingaweb2/modules/pnp/
+RUN cd /tmp && unzip icingaweb2-module-pnp.zip && mv icingaweb2-module-pnp-1.0.1/ /usr/share/icingaweb2/modules/pnp/
 
 # configure PHP timezone
 RUN sed -i 's/;date.timezone =/date.timezone = UTC/g' /etc/php.ini
