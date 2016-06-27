@@ -68,16 +68,6 @@ RUN mkdir -p /var/log/supervisor; \
  find /etc/icingaweb2 -type f -name "*.ini" -exec chmod 660 {} \; ; \
  find /etc/icingaweb2 -type d -exec chmod 2770 {} \;
 
-ENV NRDP_TOKEN "token1","token2"
-# Setup NRDPE
-#ADD $DOWNNRDPE /tmp/nrdp.zip
-ADD content/usr/local/nrdp.zip /tmp/
-RUN cd /tmp && unzip nrdp.zip && mkdir /usr/local/nrdp/ && cd /usr/local/nrdp/ && cp -r /tmp/nrdp/* . && chown -R apache.apache /usr/local/nrdp && \
-    cp /tmp/nrdp/nrdp.conf /etc/httpd/conf.d/ && \
-    sed -i '/ Order allow,deny/d' /etc/httpd/conf.d/nrdp.conf && \
-    sed -i 's/ Allow from all/Require all granted/g' /etc/httpd/conf.d/nrdp.conf && \
-    sed -i 's/\/\/\"mysecrettoken\b.*$/${NRDP_TOKEN}/' /usr/local/nrdp/server/config.inc.php 
-
 ADD https://exchange.icinga.org/icinga/PNP/files/1255/icingaweb2-module-pnp.zip /tmp/
 
 # configure PHP timezone
