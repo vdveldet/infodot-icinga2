@@ -50,9 +50,5 @@ if [ ! -d /var/log/httpd ];  then
 	mkdir -p /var/log/httpd
 fi
 
-# start pnp daemon
-/etc/init.d/npcd restart
-
-
 echo_log "Starting Supervisor. CTRL-C will stop the container."
-/usr/bin/supervisord -c /etc/supervisord.conf >> /dev/null
+/usr/bin/supervisord -c /etc/supervisord.conf
