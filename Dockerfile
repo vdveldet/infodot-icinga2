@@ -12,7 +12,8 @@ RUN 	yum -y update && \
 	yum -y install mariadb-server mariadb-libs mariadb && \
  	yum -y install unzip
 RUN 	yum -y install http://packages.icinga.org/epel/7/release/noarch/icinga-rpm-release-7-1.el7.centos.noarch.rpm && \
-	yum -y install nagios-plugins-all icinga2 icinga2-doc icinga2-ido-mysql icingaweb2 icingacli php-ZendFramework php-ZendFramework-Db-Adapter-Pdo-Mysql pnp4nagios
+	yum -y install nagios-plugins-all icinga2 icinga2-doc icinga2-ido-mysql icingaweb2 icingacli php-ZendFramework php-ZendFramework-Db-Adapter-Pdo-Mysql
+RUN     yum -y install graphite-web graphite-carbon
 
 # docs are not installed by default https://github.com/docker/docker/issues/10650 https://registry.hub.docker.com/_/centos/
 # official docs are wrong, go for http://superuser.com/questions/784451/centos-on-docker-how-to-install-doc-files
@@ -68,9 +69,6 @@ RUN mkdir -p /var/log/supervisor; \
  find /etc/icingaweb2 -type f -name "*.ini" -exec chmod 660 {} \; ; \
  find /etc/icingaweb2 -type d -exec chmod 2770 {} \;
 
-# Add pnp4nagios module
-ADD https://exchange.icinga.org/icinga/PNP/files/1255/icingaweb2-module-pnp.zip /tmp/
-RUN cd /tmp && unzip icingaweb2-module-pnp.zip && mv icingaweb2-module-pnp-1.0.1/ /usr/share/icingaweb2/modules/pnp/
 
 # configure PHP timezone
 RUN sed -i 's/;date.timezone =/date.timezone = UTC/g' /etc/php.ini
