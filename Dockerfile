@@ -78,6 +78,7 @@ RUN cd /tmp && unzip nrdp.zip && mkdir /usr/local/nrdp/ && cd /usr/local/nrdp/ &
     sed -i 's/ Allow from all/Require all granted/g' /etc/httpd/conf.d/nrdp.conf && \
     sed -i 's/\/\/\"mysecrettoken\b.*$/${NRDP_TOKEN}/' /usr/local/nrdp/server/config.inc.php 
 
+ADD https://exchange.icinga.org/icinga/PNP/files/1255/icingaweb2-module-pnp.zip /tmp/
 
 # configure PHP timezone
 RUN sed -i 's/;date.timezone =/date.timezone = UTC/g' /etc/php.ini
