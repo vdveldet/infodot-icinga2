@@ -13,7 +13,7 @@ RUN 	yum -y update && \
  	yum -y install unzip
 RUN 	yum -y install http://packages.icinga.org/epel/7/release/noarch/icinga-rpm-release-7-1.el7.centos.noarch.rpm && \
 	yum -y install nagios-plugins-all icinga2 icinga2-doc icinga2-ido-mysql icingaweb2 icingacli php-ZendFramework php-ZendFramework-Db-Adapter-Pdo-Mysql
-RUN     yum -y install graphite-web graphite-carbon
+#RUN     yum -y install graphite-web graphite-carbon
 
 # docs are not installed by default https://github.com/docker/docker/issues/10650 https://registry.hub.docker.com/_/centos/
 # official docs are wrong, go for http://superuser.com/questions/784451/centos-on-docker-how-to-install-doc-files
