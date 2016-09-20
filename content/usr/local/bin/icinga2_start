@@ -22,10 +22,6 @@ echo_log "Enabling icinga2 features."
 # enable icinga2 features if not already there
 /usr/local/bin/config-icinga2.sh
 
-echo_log "Enabling icingaweb2 modules."
-if [[ -L /etc/icingaweb2/enabledModules/monitoring ]]; then echo "Symlink for /etc/icingaweb2/enabledModules/monitoring exists already...skipping"; else ln -s /usr/share/icingaweb2/modules/monitoring /etc/icingaweb2/enabledModules/monitoring; fi
-if [[ -L /etc/icingaweb2/enabledModules/doc ]]; then echo "Symlink for /etc/icingaweb2/enabledModules/doc exists already...skipping"; else ln -s /usr/share/icingaweb2/modules/doc /etc/icingaweb2/enabledModules/doc; fi
-
 
 if [[ -n $ICINGA2_FEATURE_GRAPHITE ]]; then
   echo_log "Enabling Icinga 2 Graphite feature."
